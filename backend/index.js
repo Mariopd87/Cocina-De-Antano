@@ -1,34 +1,19 @@
-const http = require("http");
+var express = require("express");
+var app = express();
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-const handleRequest = (req, res) => {
-  const { url, method } = req;
+var productos = require("./src/routes/producto.route");
+var categorias = require("./src/routes/categoria.route");
+var usuarios = require("./src/routes/usuario.route");
 
-  if (url === "/productos" && method === "GET") {
-    res.statusCode = 200;
-    res.write("estamos en la pagina de productos");
-  }
-  else if (url === "/productos/:id" && method === "GET") {
-    res.statusCode = 200;
-    res.write("Vemos producto");
-  }
-  else if (url === "/productos" && method === "POST") {
-    res.statusCode = 200;
-    res.write("Insertamos producto");
-  }
-  else if (url === "/productos" && method === "PUT") {
-    res.statusCode = 200;
-    res.write("Actualizamos producto");
-  }
-  else if (url === "/productos" && method === "DELETE") {
-    res.statusCode = 200;
-    res.write("Eliminamos producto");
-  } else {
-    res.statusCode = 200;
-    res.write("Estamos en la pagina principal");
-  }
+app.get("/api", function (req, res) {
+  res.status(200);
+  res.json({ message: "welcome to api cocina de antaño", status: 200 });
+});
 
-  res.end();
-};
+app.use("/api/productos", productos);
+app.use("/api/categorias", categorias);
+app.use("/api/usuarios", usuarios);
 
-const server = http.createServer(handleRequest);
-server.listen(8000);
+app.listen(8000);
