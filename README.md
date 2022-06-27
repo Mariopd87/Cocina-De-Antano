@@ -37,3 +37,56 @@ Las peticiones del modelo de Usuarios se lanzan de la siguiente manera:
     - Parámetro BODY:
         - `nombre *<string>*`
         - `apellidos *<string>*`
+        - `email *<string>*`
+        - `genero *<string>*`
+        - `direccion *<string>*`
+        - `direccion2 *<string>*`
+        - `codigoPostal *<number>*`
+        - `telefono *<number>*`
+
+
+#### **Modelo Producto**
+Las peticiones del modelo de Productos se lanzan de la siguiente manera:
+
+- INDEX
+    - Ruta: `localhost:8000/api/productos`
+    - Método: `GET`
+
+- VIEW
+    - Ruta: `localhost:8000/api/productos/:productoId`
+    - Método: `GET`
+    - Parámetro URL: `productoId`
+
+- CREATE
+    - Ruta: `localhost:8000/api/productos`
+    - Método: `POST`
+    - Parámetro BODY:
+        - `nombreProducto *<string>*`
+        - `categoriaId *<number>*`
+        - `imagen *<string>*`
+        - `descripcionShort *<string>*`
+        - `descripcion *<string>*`
+
+
+        #### **Modelo Categoria**
+Las peticiones del modelo de Categorias se lanzan de la siguiente manera:
+
+- INDEX
+    - Ruta: `localhost:8000/api/categorias`
+    - Método: `GET`
+
+- VIEW
+    - Ruta: `localhost:8000/api/categorias/:categoriaId`
+    - Método: `GET`
+    - Parámetro URL: `categoriaId`
+
+- CREATE
+    - Ruta: `localhost:8000/api/categorias`
+    - Método: `POST`
+    - Parámetro BODY:
+        - `nombre *<string>*`
+        
+
+        
+
+
