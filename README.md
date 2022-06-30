@@ -19,6 +19,8 @@ Para instalar las dependencias escribir el siguiente comando dentro del director
 npm install
 ```
 
+## Modelos de datos
+
 #### **Modelo Usuario**
 Las peticiones del modelo de Usuarios se lanzan de la siguiente manera:
 
@@ -38,12 +40,32 @@ Las peticiones del modelo de Usuarios se lanzan de la siguiente manera:
         - `nombre *<string>*`
         - `apellidos *<string>*`
         - `email *<string>*`
+        - `password *<string>`
         - `genero *<string>*`
         - `direccion *<string>*`
         - `direccion2 *<string>*`
         - `codigoPostal *<number>*`
         - `telefono *<number>*`
 
+- UPDATE
+    - Ruta: `localhost:8000/api/usuarios/:usuarioId`
+    - Método: `PUT`
+    - Parámetro URL: `usuarioId`
+    - Parámetro BODY:
+        - `nombre *<string>*`
+        - `apellidos *<string>*`
+        - `email *<string>*`
+        - `password *<string>`
+        - `genero *<string>*`
+        - `direccion *<string>*`
+        - `direccion2 *<string>*`
+        - `codigoPostal *<number>*`
+        - `telefono *<number>*`
+
+- DELETE
+    - Ruta: `localhost:8000/api/usuarios/:usuarioId`
+    - Método: `DELETE`
+    - Parámetro URL: `usuarioId`
 
 #### **Modelo Producto**
 Las peticiones del modelo de Productos se lanzan de la siguiente manera:
@@ -67,8 +89,24 @@ Las peticiones del modelo de Productos se lanzan de la siguiente manera:
         - `descripcionShort *<string>*`
         - `descripcion *<string>*`
 
+- UPDATE
+    - Ruta: `localhost:8000/api/productos/:productoId`
+    - Método: `PUT`
+    - Parámetro URL: `productoId`
+    - Parámetro BODY:
+        - `nombreProducto *<string>*`
+        - `categoriaId *<number>*`
+        - `imagen *<string>*`
+        - `descripcionShort *<string>*`
+        - `descripcion *<string>*`
 
-        #### **Modelo Categoria**
+- DELETE
+    - Ruta: `localhost:8000/api/productos/:productoId`
+    - Método: `DELETE`
+    - Parámetro URL: `productoId`
+
+
+#### **Modelo Categoria**
 Las peticiones del modelo de Categorias se lanzan de la siguiente manera:
 
 - INDEX
@@ -85,6 +123,18 @@ Las peticiones del modelo de Categorias se lanzan de la siguiente manera:
     - Método: `POST`
     - Parámetro BODY:
         - `nombre *<string>*`
+
+- UPDATE
+    - Ruta: `localhost:8000/api/categorias/:categoriaId`
+    - Método: `PUT`
+    - Parámetro URL: `categoriaId`
+    - Parámetro BODY:
+        - `nombre *<string>*`
+
+- DELETE
+    - Ruta: `localhost:8000/api/categorias/:categoriaId`
+    - Método: `DELETE`
+    - Parámetro URL: `categoriaId`
         
 
         
