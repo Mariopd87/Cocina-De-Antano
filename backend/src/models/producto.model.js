@@ -6,7 +6,7 @@ module.exports = (mongoose) => {
       categoriaId: Number,
       imagen: String,
       descripcionShort: String,
-      descripcion: String
+      descripcion: String,
     },
     { versionKey: false }
   );

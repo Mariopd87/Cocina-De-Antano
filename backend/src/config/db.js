@@ -1,17 +1,7 @@
 module.exports = (mongoose) => {
-  const urlDB = "mongodb://localhost:27017/cocinaDeAntano";
+  const dbPort = process.env.DB_PORT;
+  const dbName = process.env.DB_NAME;
+  const urlDB = `mongodb://localhost:${dbPort}/${dbName}`;
 
-  mongoose
-    .connect(urlDB)
-    .then()
-    .catch((error) => console.error(error));
-
-  var productosSchema = mongoose.Schema(
-    {
-      nombreProducto: String,
-      categoriaId: Number,
-      id: Number,
-    },
-    { timestamps: true }
-  );
+  mongoose.connect(urlDB).catch((error) => console.error(error));
 };

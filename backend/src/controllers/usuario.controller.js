@@ -7,7 +7,8 @@ const errorMsg400 =
 const errorMsg200Storage = "Usuario creado correctamente";
 const errorMsg200Update = "Usuario actualizado correctamente";
 const errorMsg200Delete = "Usuario borrado correctamente";
-const errorMsg500 = "Error interno de servidor";
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   /**
@@ -16,7 +17,7 @@ module.exports = {
    */
   index: async () => {
     // Me traigo toda la lista de usuarios sin filtro
-    return await UsuarioModel.find();
+    return await UsuarioModel.find().sort({ id: -1 });
   },
 
   /**
@@ -45,6 +46,7 @@ module.exports = {
    * Body Params: nombre <string>
    *              apellidos <string>
    *              email <string>
+   *              password <string>
    *              genero <string>
    *              direccion <string>
    *              direccion2 <string>
@@ -69,22 +71,31 @@ module.exports = {
           console.error(error);
         });
 
+      // Encripto la contraseña
+      const salt = await bcrypt.genSalt(10);
+      const password = await bcrypt.hash(usuarioData.password, salt);
+
       // Hago la inserción en la BD capturando los parámetros pasados por POST
-      await UsuarioModel.create({
+      const user = new UsuarioModel({
         id: lastId + 1,
         nombre: usuarioData.nombre,
         apellidos: usuarioData.apellidos,
         email: usuarioData.email,
+        password: password,
         genero: usuarioData.genero,
         direccion: usuarioData.direccion,
         direccion2: usuarioData.direccion2,
         codigoPostal: usuarioData.codigoPostal,
-        telefono: usuarioData.telefono
-      })
-        .then((result = { message: errorMsg200Storage, status: 200 }))
-        .catch((error) => {
-          result = { message: error.message, status: 500 };
-        });
+        telefono: usuarioData.telefono,
+      });
+
+      try {
+        const savedUser = await user.save();
+        result = { message: errorMsg200Storage, status: 200 };
+      } catch (error) {
+        console.log("entro por aqui");
+        result = { message: error.message, status: 500 };
+      }
     } else {
       result = { message: errorMsg400, status: 400 };
     }
@@ -99,6 +110,7 @@ module.exports = {
    * Body Params: nombre <string>
    *              apellidos <string>
    *              email <string>
+   *              password <string>
    *              genero <string>
    *              direccion <string>
    *              direccion2 <string>
@@ -111,6 +123,19 @@ module.exports = {
     // Primero chequeo de que la petición contenga parámetros a actualizar en la BD
     if (Object.entries(userData).length > 0) {
       const usuarioId = userData.params.usuarioId;
+      let password;
+
+      // Si el usuario escribe un password lo encripto si no, dejo la misma que tiene actualmente
+      if (
+        typeof userData.body.password === 'undefined' ||
+        userData.body.password === ""
+      ) {
+        const userDbPassword = await UsuarioModel.find({ id: usuarioId });
+        password = userDbPassword[0].password;
+      } else {
+        const salt = await bcrypt.genSalt(10);
+        password = await bcrypt.hash(userData.body.password, salt);
+      }
 
       // Realizo el update del modelo buscando por la propiedad id
       await UsuarioModel.updateOne(
@@ -119,11 +144,12 @@ module.exports = {
           nombre: userData.body.nombre,
           apellidos: userData.body.apellidos,
           email: userData.body.email,
+          password: password,
           genero: userData.body.genero,
           direccion: userData.body.direccion,
           direccion2: userData.body.direccion2,
           codigoPostal: userData.body.codigoPostal,
-          telefono: userData.body.telefono
+          telefono: userData.body.telefono,
         }
       )
         .then((data) => {
@@ -164,6 +190,40 @@ module.exports = {
       .catch((error) => {
         result = { message: error.message, status: 500 };
       });
+
+    return result;
+  },
+
+  login: async (userData) => {
+    let result;
+
+    // Compruebo si el usuario y la contraseña son correctas, sino devuelvo error 400
+    const user = await UsuarioModel.findOne({ email: userData.email });
+    if (!user) result = { message: "Usuario no encontrado", status: 400 };
+    else {
+      const validPassword = await bcrypt.compare(
+        userData.password,
+        user.password
+      );
+      if (!validPassword)
+        result = { message: "Contraseña no válida", status: 400 };
+      else {
+        // Creo el Token
+        const token = jwt.sign(
+          {
+            name: user.name,
+            id: user._id,
+          },
+          process.env.TOKEN_SECRET
+        );
+
+        result = {
+          message: `Usuario Identificado correctamente. Bienvenid@ ${user.nombre} ${user.apellidos}`,
+          status: 200,
+          token: token,
+        };
+      }
+    }
 
     return result;
   },
