@@ -15,7 +15,35 @@ module.exports = {
    */
   index: async () => {
     // Me traigo toda la lista de productos sin filtro
-    return await ProductoModel.find();
+    return await ProductoModel.find().sort({id: -1});
+  },
+
+  /**
+   * Método para obtener los últimos 14 productos insertados
+   * Method: GET
+   */
+   novedades: async () => {
+    return await ProductoModel.find().sort({id: -1}).limit(12);
+  },
+
+  /**
+   * Método para ver los productos de una categoría
+   * Method: GET
+   * Params: categoriaId <number>
+   */
+  porCategoria: async (categoriaId) => {
+    let result;
+
+    // Hago una búsqueda del producto, y si no lo encuentra devuelvo un 404
+    await ProductoModel.find({ categoriaId: categoriaId }).sort({ id: -1 }).then((data) => {
+      if (data[0] !== undefined && data[0].id !== undefined) {
+        result = data;
+      } else {
+        result = { message: errorMsg404, status: 404 };
+      }
+    });
+
+    return result;
   },
 
   /**
@@ -73,6 +101,7 @@ module.exports = {
         descripcionShort: productData.descripcionShort,
         imagen: productData.imagen,
         nombreProducto: productData.nombreProducto,
+        precio: productData.precio
       })
         .then((result = { message: errorMsg200Storage, status: 200 }))
         .catch((error) => {
@@ -111,6 +140,7 @@ module.exports = {
           descripcionShort: productData.body.descripcionShort,
           imagen: productData.body.imagen,
           nombreProducto: productData.body.nombreProducto,
+          precio: productData.body.precio
         }
       )
         .then((data) => {

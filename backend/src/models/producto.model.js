@@ -7,6 +7,7 @@ module.exports = (mongoose) => {
       imagen: String,
       descripcionShort: String,
       descripcion: String,
+      precio: Number
     },
     { versionKey: false }
   );

@@ -66,6 +66,7 @@ module.exports = {
       await CategoriaModel.create({
         id: lastId + 1,
         nombre: categoryData.nombre,
+        imagen: categoryData.imagen
       })
         .then((result = { message: errorMsg200Storage, status: 200 }))
         .catch((error) => {
@@ -96,6 +97,7 @@ module.exports = {
         { id: categoriaId },
         {
           nombre: categoryData.body.nombre,
+          imagen: categoryData.body.imagen
         }
       )
         .then((data) => {

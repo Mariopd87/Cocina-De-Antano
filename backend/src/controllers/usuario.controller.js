@@ -220,6 +220,7 @@ module.exports = {
         result = {
           message: `Usuario Identificado correctamente. Bienvenid@ ${user.nombre} ${user.apellidos}`,
           status: 200,
+          user: user,
           token: token,
         };
       }

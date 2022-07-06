@@ -2,7 +2,8 @@ module.exports = (mongoose) => {
     var categoriasSchema = mongoose.Schema(
       {
         id: Number,
-        nombre: String
+        nombre: String,
+        imagen: String
       },
       { versionKey: false }
     );

@@ -12,6 +12,14 @@ const auth = require("./src/routes/auth.route");
 
 // Cargo los Middlewares
 const verifyJWT = require("./src/middlewares/validate-token");
+const activateCors = require("./src/middlewares/activate-cors");
+
+const cors = require('cors');
+var corsOptions = {
+    origin: '*', // Reemplazar con dominio
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 
 // Genero mensaje de bienvenida para la ruta principal
 app.get("/api", function (req, res) {
@@ -20,12 +28,11 @@ app.get("/api", function (req, res) {
 });
 
 // Rutas protegidas mediante JWT
-app.use("/api/productos", verifyJWT, productos);
-app.use("/api/categorias", verifyJWT, categorias);
+app.use("/api/productos", productos);
+app.use("/api/categorias",categorias);
 app.use("/api/usuarios", verifyJWT, usuarios);
 
 // Rutas abiertas sin JWT
-app.use("/api", auth);
 app.use("/api", auth);
 
 // Leo el puerto desde las variables de entorno y si no lo detecta pone por defecto el 8000

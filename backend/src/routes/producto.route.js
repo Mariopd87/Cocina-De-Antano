@@ -26,6 +26,41 @@ router.get("/", function (req, res) {
 });
 
 /**
+ * Listado de últimos productos
+ * Method: GET
+ * Params: categoriaId <Number>
+ */
+ router.get("/cat/:categoriaId", function (req, res) {
+  productosController
+    .porCategoria(req.params.categoriaId)
+    .then((data) => {
+      res.status(200);
+      res.json(data);
+    })
+    .catch((error) => {
+      res.status(500);
+      res.json(error);
+    });
+});
+
+/**
+ * Listado de productos por categoría
+ * Method: GET
+ */
+ router.get("/novedades", function (req, res) {
+  productosController
+    .novedades()
+    .then((data) => {
+      res.status(200);
+      res.json(data);
+    })
+    .catch((error) => {
+      res.status(500);
+      res.json(error);
+    });
+});
+
+/**
  * Ver detalles de producto
  * Params: productoId <Number>
  * Method: GET
