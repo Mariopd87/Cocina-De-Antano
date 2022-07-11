@@ -1,0 +1,386 @@
+[{
+  "_id": {
+    "$oid": "62cb112860e0c26bb78e5554"
+  },
+  "id": 2,
+  "nombreProducto": "Ensalada César",
+  "categoriaId": 1,
+  "imagen": "product-2.jpg",
+  "descripcionShort": "Ensalada césar con pollo crujiente",
+  "descripcion": "Ensalada césar con pollo crujiente. Ración para unas 2 personas aproximadamente.",
+  "precio": 12
+},{
+  "_id": {
+    "$oid": "62cb191f60e0c26bb78e5581"
+  },
+  "id": 3,
+  "nombreProducto": "Aguacate con atún y tomate",
+  "categoriaId": 1,
+  "imagen": "product-3.jpg",
+  "descripcionShort": "Aguacate de la axarquía con tomates de la huerta y atún",
+  "descripcion": "Aguacate de la axarqía malagueña con tomate de la huerta y atún, ración para dos personas ",
+  "precio": 10.5
+},{
+  "_id": {
+    "$oid": "62cb273860e0c26bb78e55a5"
+  },
+  "id": 4,
+  "nombreProducto": "Cogollos a la cordobesa",
+  "categoriaId": 1,
+  "imagen": "product-4.jpg",
+  "descripcionShort": "Cogollos de lechugas con ajos refritos",
+  "descripcion": "Delicioso cogollo abierto en cuatro con ajitos picados y refritos con aceite de oliva.",
+  "precio": 7.5
+},{
+  "_id": {
+    "$oid": "62cb28ad60e0c26bb78e55b1"
+  },
+  "id": 5,
+  "nombreProducto": "Ensalada de pasta",
+  "categoriaId": 1,
+  "imagen": "product-5.jpg",
+  "descripcionShort": "Espirales con gambas,atun y aceitunas.",
+  "descripcion": "Espirales cocidos con gambas nacionales, tomates cherrys, aceitunas negras y atun. perfecta ensalada fresca para los días mas calurosos. ",
+  "precio": 8
+},{
+  "_id": {
+    "$oid": "62cb299b60e0c26bb78e55b7"
+  },
+  "id": 6,
+  "nombreProducto": "Ensaladilla Rusa",
+  "categoriaId": 1,
+  "imagen": "product-6.jpg",
+  "descripcionShort": "Ensaladilla rusa con nuestra deliciosa mahonesa casera.",
+  "descripcion": "Ensaladilla rusa de atun, gambas,bocas de mar, patatas, guisantes, zanahorias y nuestra exquisita mahonesa casera con su toque de la casa.",
+  "precio": 7
+},{
+  "_id": {
+    "$oid": "62cb2b3760e0c26bb78e55bd"
+  },
+  "id": 7,
+  "nombreProducto": "Pulpo a la Gallega",
+  "categoriaId": 1,
+  "imagen": "product-7.jpg",
+  "descripcionShort": "Pulpo cocido con base de patata y pimentón.",
+  "descripcion": "Plato típico gallego que con los años lo come todo el mundo. Se basa en un pulpo cocido y cortado sobre una base de patatas cocidas y cortadas al mismo modo que el pulpo, y termina con un poco de pimenton (dulce o picante).",
+  "precio": 12.5
+},{
+  "_id": {
+    "$oid": "62cb2ca960e0c26bb78e55c3"
+  },
+  "id": 8,
+  "nombreProducto": "Croquetas de puchero",
+  "categoriaId": 1,
+  "imagen": "product-8.jpg",
+  "descripcionShort": "Croquetas tradicionales caseras de pucheros.",
+  "descripcion": "Croquetas de masa casera de puchero (jamón,tocino,pollo,ternera y caldo puchero) y su toque de bechamel.  Culmina con un frito para que queden esas 10 croquetas de ración doraditas.",
+  "precio": 8
+},{
+  "_id": {
+    "$oid": "62cb2dad60e0c26bb78e55c9"
+  },
+  "id": 9,
+  "nombreProducto": "Papas Bravas",
+  "categoriaId": 1,
+  "imagen": "product-9.jpg",
+  "descripcionShort": "Patatas caseras con salsa de tomates algo picante.",
+  "descripcion": "Patatas cortadas en gajos que son cocidas un poco y acabadas fritas , con su salsa 100% casera de tomate y su toque de pique que le dá la cayena.",
+  "precio": 6.5
+},{
+  "_id": {
+    "$oid": "62cb2f0760e0c26bb78e55cf"
+  },
+  "id": 10,
+  "nombreProducto": "Alcachofas con Jamón",
+  "categoriaId": 1,
+  "imagen": "product-10.jpg",
+  "descripcionShort": "Alcachofas cocidas con jamón iberico.",
+  "descripcion": "Alcachofas limpias y cocidas con cebollita y vino blanco , con su toque de sal como cualquier comida sin abusar ya que los tacos de jamón iberico que se le añade hacen el resto.",
+  "precio": 9
+},{
+  "_id": {
+    "$oid": "62cb2feb60e0c26bb78e55d5"
+  },
+  "id": 11,
+  "nombreProducto": "Pincho de Gambas",
+  "categoriaId": 1,
+  "imagen": "product-11.jpg",
+  "descripcionShort": "Pincho de gambas malagueñas a la plancha.",
+  "descripcion": "Ración de dos pinchos de gambas malagueñas con su toque de sal y a la plancha. Recomendado dar un toque de limón y una buena rebenada de pan de pueblo.",
+  "precio": 6.5
+},{
+  "_id": {
+    "$oid": "62cb318960e0c26bb78e55de"
+  },
+  "id": 12,
+  "nombreProducto": "Cazuela de Fideos",
+  "categoriaId": 2,
+  "imagen": "product-12.jpg",
+  "descripcionShort": "Cazuela de fideos con patatas cocidas y gambas.",
+  "descripcion": "Cazuela de fideos medianos con patatas cocidas y gambas de la zona. Anteriormente realizar un refrito y pasarlo todo para que quede mas espeso.",
+  "precio": 8.5
+},{
+  "_id": {
+    "$oid": "62cb327960e0c26bb78e55ee"
+  },
+  "id": 13,
+  "nombreProducto": "Crema de Verdura",
+  "categoriaId": 2,
+  "imagen": "product-13.jpg",
+  "descripcionShort": "crema de verduras del terreno.",
+  "descripcion": "Crema de verdura(puerro,calabacín y zanahoria), con su toque de sal y pimienta.",
+  "precio": 6
+},{
+  "_id": {
+    "$oid": "62cb337e60e0c26bb78e55f6"
+  },
+  "id": 14,
+  "nombreProducto": "Gazpachuelo",
+  "categoriaId": 2,
+  "imagen": "product-14.jpg",
+  "descripcionShort": "Gazpachuelo , plato malagueño de sopa de pescado y mahonesa.",
+  "descripcion": " sopa caliente originaria de Málaga ,consistente en un caldo de pescado y mahonesa a base de yema de huevo y aceite de oliva. Se acompaña de la clara del huevo duro cortado en pequeños taquitos, así como de patatas cocidas, servida también en taquitos, y rebanaditas de pan tostado.",
+  "precio": 7.5
+},{
+  "_id": {
+    "$oid": "62cb34a160e0c26bb78e5601"
+  },
+  "id": 15,
+  "nombreProducto": "Lentejas ",
+  "categoriaId": 2,
+  "imagen": "product-15.jpg",
+  "descripcionShort": "Lentejas con chorizo.",
+  "descripcion": "Potaje de lentejas con chorizo, con su pequeño refrito y su toque de laurel. Plato muy bueno para aquellas personas que suelan tener el hierro un poco bajo.",
+  "precio": 7.5
+},{
+  "_id": {
+    "$oid": "62cb354160e0c26bb78e5607"
+  },
+  "id": 16,
+  "nombreProducto": "potaje de Garbanzos",
+  "categoriaId": 2,
+  "imagen": "product-16.jpg",
+  "descripcionShort": "potaje caliente de garbanzos con verduras.",
+  "descripcion": "potaje de garbanzos y verduritas refritas y pasadas para tener un espesor especial, y con un poco de arroz cocido.",
+  "precio": 7.5
+},{
+  "_id": {
+    "$oid": "62cb373960e0c26bb78e5614"
+  },
+  "id": 17,
+  "nombreProducto": "Gnocchis al pesto",
+  "categoriaId": 3,
+  "imagen": "product-17.jpg",
+  "descripcionShort": "Gnocchis con salsa pesto. ",
+  "descripcion": "Pasta rellena de patata (gnocchis), acompañada de una salsa de albahaca (ese color verde de la salsa), ajo, queso parmesano y sal y pimienta.",
+  "precio": 8.5
+},{
+  "_id": {
+    "$oid": "62cb385c60e0c26bb78e561a"
+  },
+  "id": 18,
+  "nombreProducto": "Lasaña",
+  "categoriaId": 3,
+  "imagen": "product-18.jpg",
+  "descripcionShort": "Lasaña mixta de carne picada de cerdo y pollo.",
+  "descripcion": "Láminas cocidas que entre capa y capa se introduce la carne picada mixta anteriormente cocida con un refrito de tomate y verdurita picada, y posteriormente pasadas al horno para que salga gratinada. ",
+  "precio": 9
+},{
+  "_id": {
+    "$oid": "62cb397460e0c26bb78e5620"
+  },
+  "id": 19,
+  "nombreProducto": "Macarrones Boloñesa",
+  "categoriaId": 3,
+  "imagen": "product-19.jpg",
+  "descripcionShort": "macarrones con salsa de tomate y carne picada.",
+  "descripcion": "Macarrones cocidos con salsa boloñesa que se elabora con  salsa de tomate que se hace con un refrito de verdura y carne picada de cerdo. Se puede acompañar de queso rallado por encima. ",
+  "precio": 7
+},{
+  "_id": {
+    "$oid": "62cb3ab660e0c26bb78e5626"
+  },
+  "id": 20,
+  "nombreProducto": "Rissoto con Setas",
+  "categoriaId": 3,
+  "imagen": "product-20.jpg",
+  "descripcionShort": "Arroz meloso con queso y setas.",
+  "descripcion": "Arroz mediano sofrito con mantequilla y cebolla para conseguir que se ponga meloso, añadir queso parmesano y por ultimo las setas que se refrien anteriormente.",
+  "precio": 9.5
+},{
+  "_id": {
+    "$oid": "62cb3cd360e0c26bb78e562c"
+  },
+  "id": 21,
+  "nombreProducto": "Espaguetis Carbonara",
+  "categoriaId": 3,
+  "imagen": "product-21.jpg",
+  "descripcionShort": "Espaguetis con salsa carbonara de nata y bacon.",
+  "descripcion": "Espaguetis cocidos con sal, acompañado de una salsa eleborada con huevo, queso curado y bacon o panceta(carbonara).",
+  "precio": 8.5
+},{
+  "_id": {
+    "$oid": "62cb3d9460e0c26bb78e5632"
+  },
+  "id": 22,
+  "nombreProducto": "Almejas Salteadas",
+  "categoriaId": 4,
+  "imagen": "product-22.jpg",
+  "descripcionShort": "Almejas de la bahía con una salsa elaborada con vino blanco.",
+  "descripcion": "Almejas 100% malagueñas elaboradas con vino blanco y un diente de ajo cortado en láminas y su pizcade sal. Obligatorio comer con un buen pan para hacer barquitos en la salsa.",
+  "precio": 10.5
+},{
+  "_id": {
+    "$oid": "62cb3f0260e0c26bb78e5638"
+  },
+  "id": 23,
+  "nombreProducto": "Bacalao al pil pil",
+  "categoriaId": 4,
+  "imagen": "product-23.jpg",
+  "descripcionShort": "Bacalao con ese toque un poco picante .",
+  "descripcion": "Plato tipico vasco, consiste en elaborar el bacalo con aceite de oliva, ajitos y media guindilla al que no le guste tanto el pique , si no una guindilla. Recomendar tomar en un plato de barro.",
+  "precio": 11
+},{
+  "_id": {
+    "$oid": "62cb3fac60e0c26bb78e563e"
+  },
+  "id": 24,
+  "nombreProducto": "Boquerones fritos",
+  "categoriaId": 4,
+  "imagen": "product-24.jpg",
+  "descripcionShort": "Boquerones vitorianos (malagueños) fritos.",
+  "descripcion": "Ración de boquerones vitorianos que son los de aquí de la bahía fritos con su toque de sal y harinado. Recomendar comer con un poco de limón.",
+  "precio": 8
+},{
+  "_id": {
+    "$oid": "62cb405c60e0c26bb78e5644"
+  },
+  "id": 25,
+  "nombreProducto": "Calamares fritos",
+  "categoriaId": 4,
+  "imagen": "product-25.jpg",
+  "descripcionShort": "Anillas de calamares fritas.",
+  "descripcion": "Deliciosas anillas de calamares fritas con su toque de sal y harinado lo justo para freirlo y darle ese dorado que entra por los ojos. Acompañar de un buen alioli.",
+  "precio": 9.5
+},{
+  "_id": {
+    "$oid": "62cb412960e0c26bb78e564a"
+  },
+  "id": 26,
+  "nombreProducto": "Salmón a la Naranja",
+  "categoriaId": 4,
+  "imagen": "product-26.jpg",
+  "descripcionShort": "Tacos de salmón con su salsa a la naranja.",
+  "descripcion": "Jugosos tacos de salmón elaborado con su toque de aceite de oliva del terreno y su pizca de sal y pimienta. Acompañado de la salsa de naranjas 100% malagueñas que le dan ese toque único.",
+  "precio": 12.5
+},{
+  "_id": {
+    "$oid": "62cb420760e0c26bb78e5650"
+  },
+  "id": 27,
+  "nombreProducto": "Albóndigas con Tomates",
+  "categoriaId": 5,
+  "imagen": "product-27.jpg",
+  "descripcionShort": "Albóndigas de cerdo con salsa de tomate casera.",
+  "descripcion": "Albondigas  elaboradas con carne picada de cerdo con su toque de sal y refritas un poco para terminar de hacerla con la salsa de tomates caseras.",
+  "precio": 8.5
+},{
+  "_id": {
+    "$oid": "62cb430460e0c26bb78e5656"
+  },
+  "id": 28,
+  "nombreProducto": "Brochetas de Pollo",
+  "categoriaId": 5,
+  "imagen": "product-28.jpg",
+  "descripcionShort": "Una brocheta de pollo con verdura a la plancha.",
+  "descripcion": "La brocheta se realiza con cuatro trozos apañaos de pollo y entre pieza y pieza van la cebolla, pimiento rojo y verde. Todo eso pasado por el grill y sazonado como debe ser.",
+  "precio": 9
+},{
+  "_id": {
+    "$oid": "62cb43c060e0c26bb78e565c"
+  },
+  "id": 29,
+  "nombreProducto": "Entrecot de Ternera",
+  "categoriaId": 5,
+  "imagen": "product-29.jpg",
+  "descripcionShort": "Entrecot a la plancha con patatas a lo pobre.",
+  "descripcion": "Deliciosa pieza de entrecot de unos 250g aproximadamente al grill sazonado acompañado de unas buenas patatas a lo pobre con su verdurita.",
+  "precio": 13.5
+},{
+  "_id": {
+    "$oid": "62cb44b060e0c26bb78e5662"
+  },
+  "id": 30,
+  "nombreProducto": "Flamenquín cerdo y queso",
+  "categoriaId": 5,
+  "imagen": "product-30.jpg",
+  "descripcionShort": "Flamenquín casero de cerdo y queso curado.",
+  "descripcion": "Espectacular flamenquín de unos 15cm relleno de carne de cerdo picada y queso curado. (nada que envidiar al flamenquin cordobés)",
+  "precio": 9.5
+},{
+  "_id": {
+    "$oid": "62cb456b60e0c26bb78e5668"
+  },
+  "id": 31,
+  "nombreProducto": "Solomillo a la pimienta",
+  "categoriaId": 5,
+  "imagen": "product-31.jpg",
+  "descripcionShort": "Solomillo de cerdo con una salsa a la pimienta casera.",
+  "descripcion": "Solomillo sellado a la plancha con su sazonador y bien acompañado de su salsa a la pimienta casera y su bol de verdura.",
+  "precio": 14
+},{
+  "_id": {
+    "$oid": "62cb465e60e0c26bb78e567c"
+  },
+  "id": 32,
+  "nombreProducto": "Arroz con Leche",
+  "categoriaId": 6,
+  "imagen": "product-32.jpg",
+  "descripcionShort": "Arroz con leche de cabra.",
+  "descripcion": "Espectacular arroz con leche de cabra que le da esa cremosidad que nos querrás comer otro y un toque de canela en polvo.",
+  "precio": 7.5
+},{
+  "_id": {
+    "$oid": "62cb470560e0c26bb78e5682"
+  },
+  "id": 33,
+  "nombreProducto": "Brownie Chocolate",
+  "categoriaId": 6,
+  "imagen": "product-33.jpg",
+  "descripcionShort": "Bizcocho de chocolate con nueces.",
+  "descripcion": "porción de bizcocho de chocolate con nueces elaborado en el horno. Recomendado comer con una bola de helado de vainilla y si no con sirope de chocolate.",
+  "precio": 6.5
+},{
+  "_id": {
+    "$oid": "62cb47c960e0c26bb78e5688"
+  },
+  "id": 34,
+  "nombreProducto": "Natillas",
+  "categoriaId": 6,
+  "imagen": "product-34.jpg",
+  "descripcionShort": "Natillas de vainilla con leche de cabra.",
+  "descripcion": "Deliciosa natilla de vainilla y leche de cabra que es lo que hacen diferente nuestros postres, y acabado con un toque canela en polvo.",
+  "precio": 6
+},{
+  "_id": {
+    "$oid": "62cb485360e0c26bb78e568e"
+  },
+  "id": 35,
+  "nombreProducto": "Tarta Tres Chocolate",
+  "categoriaId": 6,
+  "imagen": "product-35.jpg",
+  "descripcionShort": "Tarta trifásica de chocolate y base de galletas.",
+  "descripcion": "Tarta de tres chocolate(negro,blanco y chocolate con leche) y con una base de galletas molidas y toque a mantequilla. ",
+  "precio": 5.5
+},{
+  "_id": {
+    "$oid": "62cb48f360e0c26bb78e5696"
+  },
+  "id": 36,
+  "nombreProducto": "Tarta de Queso",
+  "categoriaId": 6,
+  "imagen": "product-36.jpg",
+  "descripcionShort": "Tarta de queso cuajada.",
+  "descripcion": "No es una tarta de queso normal , es la famosa tarta de queso de cabra ¡como no! y cuajada, con una base de galletas molidas .",
+  "precio": 5.5
+}]

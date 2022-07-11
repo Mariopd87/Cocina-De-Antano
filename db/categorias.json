@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "62ba09d0f4dbed7859c6fc6a"
+  },
+  "id": 1,
+  "nombre": "Ensaladas y Entrantes",
+  "imagen": "/image/cat-ensaladas.png"
+},{
+  "_id": {
+    "$oid": "62ba09d0f4dbed7859c6fc6b"
+  },
+  "id": 2,
+  "nombre": "Cuchareo",
+  "imagen": "/image/cat-sopas.png"
+},{
+  "_id": {
+    "$oid": "62ba09d0f4dbed7859c6fc6c"
+  },
+  "id": 3,
+  "nombre": "Amantes de la Pasta",
+  "imagen": "/image/cat-pastas.png"
+},{
+  "_id": {
+    "$oid": "62ba09d0f4dbed7859c6fc6d"
+  },
+  "id": 4,
+  "nombre": "Productos de la Mar",
+  "imagen": "/image/cat-pescados.png"
+},{
+  "_id": {
+    "$oid": "62ba09d0f4dbed7859c6fc6e"
+  },
+  "id": 5,
+  "nombre": "Carnívoros",
+  "imagen": "/image/cat-carnes.png"
+},{
+  "_id": {
+    "$oid": "62ba09d0f4dbed7859c6fc6f"
+  },
+  "id": 6,
+  "nombre": "Para los Golosos",
+  "imagen": "/image/cat-postres.png"
+}]
