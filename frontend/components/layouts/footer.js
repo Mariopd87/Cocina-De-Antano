@@ -38,8 +38,8 @@ const Footer = () => {
           <div className={styles.box}>
             <h3>Sígueme</h3>
 
-            <a target="_blank" href="https://github.com/Mariopd87">
-                <FontAwesomeIcon icon={faArrowRight} /> Github
+            <a target="_blank" href="https://github.com/Mariopd87/Cocina-De-Antano">
+                <FontAwesomeIcon icon={faArrowRight} /> Repositorio Github
             </a>
 
             <a target="_blank" href="https://www.linkedin.com/in/mario-p%C3%A9rez-dols/">

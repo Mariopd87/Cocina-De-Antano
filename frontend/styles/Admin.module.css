@@ -1,0 +1,725 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+.header .icons {
+  display: flex;
+}
+
+.heading {
+  background: url(/image/heading-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding-top: 28rem;
+  padding-bottom: 10rem;
+}
+
+.heading h1 {
+  color: #222;
+  font-size: 4rem;
+}
+
+.heading p {
+  padding-top: 1rem;
+  font-size: 2rem;
+  color: #666;
+}
+
+.heading p a {
+  color: #222;
+  padding-right: 0.5rem;
+}
+
+.heading p a:hover {
+  color: #bac34e;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  padding: 1.2rem 0;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  color: #222;
+}
+
+.title span {
+  color: #bac34e;
+  padding-left: 0.7rem;
+}
+
+.title a {
+  margin-left: auto;
+  color: #666;
+  font-size: 1.5rem;
+}
+
+.title a:hover {
+  color: #bac34e;
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.8rem 3rem;
+  background: #bac34e;
+  color: #fff;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #222;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2rem 9%;
+}
+
+.header .logo {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: #222;
+}
+
+.header .logo img {
+  height: 100px;
+}
+
+.header .logo i {
+  color: #bac34e;
+  padding-right: 0.5rem;
+}
+
+.header .navbar a {
+  font-size: 1.7rem;
+  color: #666;
+  margin: 0 1rem;
+}
+
+.header .navbar a:hover {
+  color: #bac34e;
+}
+
+.header .icons div {
+  font-size: 2.5rem;
+  margin-left: 1.7rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.header .icons div:hover {
+  color: #bac34e;
+}
+
+.header .searchForm {
+  position: absolute;
+  top: -115%;
+  right: 2rem;
+  width: 50rem;
+  border-radius: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 5.5rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.header .searchForm.active {
+  top: 115%;
+}
+
+.header .searchForm input {
+  height: 100%;
+  width: 100%;
+  padding: 0 1.2rem;
+  font-size: 1.6rem;
+  color: #222;
+  text-transform: none;
+}
+
+.header .searchForm label {
+  font-size: 2.5rem;
+  margin-right: 1.7rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.header .searchForm label:hover {
+  color: #bac34e;
+}
+
+.header .shoppingCart {
+  position: absolute;
+  top: 70%;
+  right: -105%;
+  background: #fff;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  width: 35rem;
+  padding: 2rem;
+  overflow: auto;
+  max-height: 40vi;
+}
+
+.header .shoppingCart.active {
+  right: 2rem;
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
+}
+
+.header .shoppingCart .title {
+  text-align: center;
+  font-size: 1.7rem;
+  color: #222;
+  padding-bottom: 1.5rem;
+}
+
+.header .shoppingCart p {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.header .shoppingCart .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.header .shoppingCart .box .faTimes {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.header .shoppingCart .box .faTimes:hover {
+  color: #bac34e;
+}
+
+.header .shoppingCart .box img {
+  height: 10rem;
+}
+
+.header .shoppingCart .box .content h3 {
+  font-size: 1.3rem;
+  padding-bottom: 1rem;
+  text-align: left;
+}
+
+.header .shoppingCart .box .content h3 a {
+  color: #222;
+}
+
+.header .shoppingCart .box .content h3 a:hover {
+  color: #bac34e;
+}
+
+.header .shoppingCart .box .content span {
+  font-size: 1.8rem;
+  color: #666;
+}
+
+.header .shoppingCart .qtyShoppingCart {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.header .shoppingCart .qtyShoppingCart button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.header .shoppingCart .qtyShoppingCart .buttonLeft {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.header .shoppingCart .qtyShoppingCart .buttonRight {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.header .shoppingCart .qtyShoppingCart span {
+  width: 4rem;
+  background-color: #fff;
+  border-top: 1px solid #e9e9ed;
+  border-bottom: 1px solid #e9e9ed;
+  text-align: center;
+  font-size: 1.8rem !important;
+}
+
+.header .shoppingCart .box .content span.multiply {
+  margin: 0 0.5rem;
+}
+
+.header .shoppingCart .total {
+  color: #666;
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+.header .shoppingCart .total span {
+  color: #222;
+}
+
+.header .shoppingCart .btn {
+  text-align: center;
+  width: 100%;
+}
+
+.header .loginForm {
+  position: absolute;
+  top: 115%;
+  right: -105%;
+  background: #fff;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  width: 35rem;
+  padding: 2rem;
+}
+
+.header .loginForm.active {
+  right: 2rem;
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
+}
+
+.header .loginForm h3 {
+  color: #222;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+
+.header .loginForm .box {
+  margin: 0.7rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.2rem;
+  font-size: 1.5rem;
+  color: #222;
+  text-transform: none;
+  width: 100%;
+}
+
+.header .loginForm .remember {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.7rem 0;
+}
+
+.header .loginForm .remember label {
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.header .loginForm .btn {
+  margin: 1rem 0;
+  width: 100%;
+  text-align: center;
+}
+
+.header .loginForm .message {
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: bold;
+  margin: 1rem 0 2rem 0;
+  color: #bac34e;
+}
+
+.header .loginForm a {
+  color: #666;
+  padding-top: 0.7rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: block;
+  color: #bac34e;
+}
+
+.header .loginForm a:hover {
+  text-decoration: underline;
+}
+
+.header .loggedUser .user {
+  font-size: 1.7rem;
+  padding-top: 0.5rem;
+  margin-left: 0;
+}
+
+.header .loggedUser .user a {
+  cursor: pointer;
+}
+
+.header .loggedUser .user a svg {
+  font-size: 2.5rem;
+  height: 1em;
+  padding-right: 0.5rem;
+}
+
+.header .loggedUser .menuUser {
+  width: 25rem;
+  position: absolute;
+  top: -150%;
+  right: 3%;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.header .loggedUser .menuUser:hover {
+  color: #222;
+}
+
+.header .loggedUser .active {
+  position: absolute;
+  top: 70%;
+  transition: 0.4s linear;
+}
+
+.header .loggedUser .menuUser .optionUser {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1.5rem 2rem;
+}
+
+.header .loggedUser .menuUser .optionUser:hover {
+  color: #bac34e;
+  text-decoration: underline;
+}
+
+.header .loggedUser .menuUser .optionUser svg {
+  margin-right: 0.7rem;
+}
+
+.menuBtn {
+  display: none;
+}
+
+@-webkit-keyframes fadeLeft {
+  0% {
+    -webkit-transform: translateX(-5rem);
+    transform: translateX(-5rem);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeLeft {
+  0% {
+    -webkit-transform: translateX(-5rem);
+    transform: translateX(-5rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeUp {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+.adminPanel {
+  margin-top: 16rem;
+  display: flex;
+  min-height: 40vh;
+}
+
+.adminPanel > h1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  padding-top: 2rem;
+  color: #222;
+}
+
+.lateralSection {
+  width: 20%;
+  padding: 3rem;
+}
+
+.lateralSection a {
+  display: block;
+  color: #222;
+  font-size: 1.7rem;
+  padding: 1.7rem 0.7rem;
+}
+
+.lateralSection a:hover {
+  color: #bac34e;
+}
+
+.mainSection {
+  width: 80%;
+  padding: 3rem;
+}
+
+.mainSection h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+.mainSection h3 {
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.mainSection .message {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #bac34e;
+  font-weight: bold;
+  margin: 1.7rem 0;
+}
+
+.mainSection table {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mainSection table tbody tr th {
+  font-size: 1.25rem;
+  padding: 2rem 2rem 0.5rem 2rem;
+}
+
+.mainSection table tbody tr td {
+  margin: 0;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  font-weight: lighter;
+  border: 1px solid #666;
+}
+
+.mainSection table tbody tr td a {
+  color: #222;
+  font-weight: normal;
+}
+
+.mainSection table tbody tr td a:hover {
+  color: #bac34e;
+}
+
+.mainSection table tbody tr td img {
+  width: 60px;
+  border-radius: 5px;
+}
+
+.mainSection table tbody tr td.actions a {
+  font-size: 1.75rem;
+  color: #222;
+  cursor: pointer;
+}
+
+.mainSection table tbody tr td.actions a:hover {
+  color: #bac34e;
+}
+
+.mainSection table tbody tr td.actions a:first-child {
+  padding-right: 1rem;
+}
+
+.contentCenter {
+  text-align: center;
+}
+
+.mainSection table tbody tr td.precio {
+  font-weight: normal;
+  color: #bac34e;
+}
+
+.nuevoProducto {
+  padding: 0;
+}
+
+.nuevoProducto .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.nuevoProducto .row form {
+  padding: 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 40rem;
+  flex: 1 1 40rem;
+}
+
+.nuevoProducto .row form h3 {
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  color: #222;
+}
+
+.nuevoProducto .row form .inputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.nuevoProducto .row form .inputBox input {
+  width: 49%;
+}
+
+.nuevoProducto .row form .inputBox input.small {
+  width: 32%;
+  height: 55px;
+}
+
+.nuevoProducto .row form .inputBox .fullWidth {
+  width: 100% !important;
+}
+
+.nuevoProducto .row form .inputBox p {
+  font-size: 1.1rem;
+  padding-top: 1.2rem;
+  color: #222;
+  width: 49%;
+}
+
+.nuevoProducto .row form .inputBox select {
+  background: none;
+}
+
+.nuevoProducto .row form .inputBox .imageContainer {
+  position: relative;
+  margin: 0 auto;
+}
+
+.nuevoProducto .row form .inputBox .imageContainer img {
+  max-height: 20rem;
+  width: auto;
+}
+
+.nuevoProducto .row form .inputBox .imageContainer a {
+  cursor: pointer;
+}
+
+.nuevoProducto .row form .inputBox .imageContainer a svg:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.nuevoProducto .row form .inputBox .imageContainer a svg {
+  color: #222;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  position: absolute;
+  font-size: 2rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem;
+}
+
+.nuevoProducto .row form .inputBox .box,
+.nuevoProducto .row form textarea {
+  padding: 1rem 1.2rem;
+  font-size: 1.6rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  color: #222;
+  text-transform: none;
+  margin: 0.7rem 0;
+}
+
+.nuevoProducto .row form textarea {
+  width: 100%;
+  height: 16rem;
+  resize: none;
+}
+
+.nuevoProducto .row form textarea.corta {
+  width: 100%;
+  height: 8rem;
+  resize: none;
+}
+
+.nuevoProducto .row .map {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 40rem;
+  flex: 1 1 40rem;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .adminPanel {
+    min-height: 15vh;
+  }
+  .lateralSection {
+    width: 100%;
+  }
+
+  .mainSection {
+    width: 100%;
+  }
+}

@@ -3,7 +3,7 @@ import Header from "./header";
 import Footer from "./footer";
 
 export default function AppLayout(props) {
-  const { children, user } = props;
+  const { children } = props;
 
   return (
     <>
@@ -13,7 +13,7 @@ export default function AppLayout(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header user={user}></Header>
+      <Header></Header>
 
       {children}
 

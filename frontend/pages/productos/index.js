@@ -4,21 +4,36 @@ import Heading from "../../components/layouts/heading";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { useMemo, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { CartContext } from "../../context/cartContext";
 
 function Productos({ categorias, productos }) {
+  const router = useRouter();
+  const { pathname, query } = router;
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("0");
   const [productList, setProductList] = useState([]);
+  const { addItemToCart, setShowShoppingCart } = useContext(CartContext);
 
   useEffect(() => {
     setProductList(productos);
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+    let initialCatId = "0";
+
+    if (query.cat !== undefined) {
+      initialCatId = query.cat;
+    }
+
+    setSelectedCategory(initialCatId);
+    getProductsByCategory(initialCatId);
+  }, []);
+
   const getProductsByCategory = async (categoryId) => {
     if (!categoryId || categoryId === "0") {
-      console.log("entro por todos los productos");
       setProductList(productos);
       setIsLoaded(true);
     } else {
@@ -120,14 +135,21 @@ function Productos({ categorias, productos }) {
 
           <div className={styles.boxContainer}>
             {Array.isArray(productList) &&
-              productList.map((producto) => (
+              productList && productList.map((producto) => (
                 <div className={styles.box} key={producto.id}>
                   <div className={styles.icons}>
-                    <Link href="#">
-                      <a>
-                        <FontAwesomeIcon icon={faShoppingCart} />
-                      </a>
-                    </Link>
+                    <a
+                      id={producto.id}
+                      onClick={() => {
+                        addItemToCart(producto);
+                        setShowShoppingCart(styles.active);
+                        setTimeout(() => {
+                          setShowShoppingCart("");
+                        }, 3000);
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faShoppingCart} />
+                    </a>
 
                     <Link href={`/productos/${producto.id}`} key={producto.id}>
                       <a>
@@ -143,7 +165,7 @@ function Productos({ categorias, productos }) {
                     <p className={styles.description}>
                       {producto.descripcionShort.substring(0, 140)}...
                     </p>
-                    <div className={styles.price}>18.99€</div>
+                    <div className={styles.price}>{producto.precio}€</div>
                   </div>
                 </div>
               ))}
