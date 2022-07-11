@@ -16,7 +16,7 @@ module.exports = {
    */
   index: async () => {
     // Me traigo toda la lista de categorías sin filtro
-    return await CategoriaModel.find();
+    return await CategoriaModel.find().sort({id: -1});
   },
 
   /**
@@ -62,16 +62,31 @@ module.exports = {
           console.error(error);
         });
 
-      // Hago la inserción en la BD capturando los parámetros pasados por POST
-      await CategoriaModel.create({
-        id: lastId + 1,
-        nombre: categoryData.nombre,
-        imagen: categoryData.imagen
-      })
-        .then((result = { message: errorMsg200Storage, status: 200 }))
-        .catch((error) => {
-          result = { message: error.message, status: 500 };
+        // Hago la inserción en la BD capturando los parámetros pasados por POST
+        const categoria = new CategoriaModel({
+          id: lastId + 1,
+          nombre: categoryData.nombre,
+          imagen: categoryData.imagen
         });
+  
+        try {
+          if (
+            categoryData.nombre === "" ) {
+            result = {
+              message: "Debe rellenar todos los campos",
+              status: 401,
+            };
+          } else {
+            await categoria.save();
+            result = {
+              message: errorMsg200Storage,
+              status: 200,
+              category: categoria,
+            };
+          }
+        } catch (error) {
+          result = { message: error.message, status: 500 };
+        }
     } else {
       result = { message: errorMsg400, status: 400 };
     }
@@ -92,12 +107,21 @@ module.exports = {
     if (Object.entries(categoryData).length > 0) {
       const categoriaId = categoryData.params.categoriaId;
 
+      // Si la imagen viene vacía, le dejo la que tiene por defecto
+      if(categoryData.body.imagen === '') {
+        const categoryDbImage = await CategoriaModel.find({ id: categoriaId });
+        imagen = categoryDbImage[0].imagen;
+      }
+      else {
+        imagen = categoryData.body.imagen;
+      }
+
       // Realizo el update del modelo buscando por la propiedad id
       await CategoriaModel.updateOne(
         { id: categoriaId },
         {
           nombre: categoryData.body.nombre,
-          imagen: categoryData.body.imagen
+          imagen: imagen
         }
       )
         .then((data) => {

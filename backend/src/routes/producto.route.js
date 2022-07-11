@@ -44,7 +44,7 @@ router.get("/", function (req, res) {
 });
 
 /**
- * Listado de productos por categoría
+ * Listado de últimos productos
  * Method: GET
  */
  router.get("/novedades", function (req, res) {

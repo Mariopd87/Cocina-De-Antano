@@ -12,11 +12,10 @@ const auth = require("./src/routes/auth.route");
 
 // Cargo los Middlewares
 const verifyJWT = require("./src/middlewares/validate-token");
-const activateCors = require("./src/middlewares/activate-cors");
 
 const cors = require('cors');
 var corsOptions = {
-    origin: '*', // Reemplazar con dominio
+    origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));

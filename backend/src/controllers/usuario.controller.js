@@ -17,7 +17,7 @@ module.exports = {
    */
   index: async () => {
     // Me traigo toda la lista de usuarios sin filtro
-    return await UsuarioModel.find().sort({ id: -1 });
+    return await UsuarioModel.find({}, { password: 0 }).sort({ id: -1 });
   },
 
   /**
@@ -29,7 +29,7 @@ module.exports = {
     let result;
 
     // Hago una búsqueda del producto, y si no lo encuentra devuelvo un 404
-    await UsuarioModel.find({ id: usuarioId }).then((data) => {
+    await UsuarioModel.find({ id: usuarioId }, { password: 0 }).then((data) => {
       if (data[0] !== undefined && data[0].id !== undefined) {
         result = data;
       } else {
@@ -59,6 +59,30 @@ module.exports = {
 
     // Primero chequeo de que la petición contenga parámetros a insertar en la BD
     if (Object.entries(usuarioData).length > 0) {
+      // Compruebo de que el email ya exista en la base de datos
+      const isEmailExits = await UsuarioModel.findOne({
+        email: usuarioData.email,
+      });
+      if (isEmailExits) {
+        return {
+          message: "El email ya existe en la base de datos",
+          status: 400,
+        };
+      }
+
+      // Compruebo de que todos los campos obligatorios vengan rellenos
+      if (
+        usuarioData.nombre === "" ||
+        usuarioData.apellidos === "" ||
+        usuarioData.email === "" ||
+        usuarioData.password === ""
+      ) {
+        return {
+          message: "Debe rellenar todos los campos",
+          status: 401,
+        };
+      }
+
       // Obtengo el último Id insertado
       await UsuarioModel.find()
         .sort({ id: -1 })
@@ -90,10 +114,9 @@ module.exports = {
       });
 
       try {
-        const savedUser = await user.save();
+        await user.save();
         result = { message: errorMsg200Storage, status: 200 };
       } catch (error) {
-        console.log("entro por aqui");
         result = { message: error.message, status: 500 };
       }
     } else {
@@ -125,9 +148,21 @@ module.exports = {
       const usuarioId = userData.params.usuarioId;
       let password;
 
+      // Compruebo de que todos los campos obligatorios vengan rellenos
+      if (
+        userData.body.nombre === "" ||
+        userData.body.apellidos === "" ||
+        userData.body.email === ""
+      ) {
+        return {
+          message: "Debe rellenar todos los campos",
+          status: 401,
+        };
+      }
+
       // Si el usuario escribe un password lo encripto si no, dejo la misma que tiene actualmente
       if (
-        typeof userData.body.password === 'undefined' ||
+        typeof userData.body.password === "undefined" ||
         userData.body.password === ""
       ) {
         const userDbPassword = await UsuarioModel.find({ id: usuarioId });
@@ -206,7 +241,7 @@ module.exports = {
         user.password
       );
       if (!validPassword)
-        result = { message: "Contraseña no válida", status: 400 };
+        result = { message: "Contraseña no válida", status: 401 };
       else {
         // Creo el Token
         const token = jwt.sign(

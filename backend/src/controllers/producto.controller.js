@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 require("../config/db")(mongoose);
 const ProductoModel = require("../models/producto.model")(mongoose);
 const errorMsg404 = "Producto no encontrado";
-const errorMsg400 = "No se puede crear el producto, ya que no contiene parámetros";
+const errorMsg400 =
+  "No se puede crear el producto, ya que no contiene parámetros";
 const errorMsg200Storage = "Producto creado correctamente";
 const errorMsg200Update = "Producto actualizado correctamente";
 const errorMsg200Delete = "Producto borrado correctamente";
@@ -15,15 +16,24 @@ module.exports = {
    */
   index: async () => {
     // Me traigo toda la lista de productos sin filtro
-    return await ProductoModel.find().sort({id: -1});
+    return await ProductoModel.aggregate([
+      {
+        $lookup: {
+          from: "categorias",
+          foreignField: "id",
+          localField: "categoriaId",
+          as: "categoria",
+        },
+      },
+    ]).sort({ id: -1 });
   },
 
   /**
    * Método para obtener los últimos 14 productos insertados
    * Method: GET
    */
-   novedades: async () => {
-    return await ProductoModel.find().sort({id: -1}).limit(12);
+  novedades: async () => {
+    return await ProductoModel.find().sort({ id: -1 }).limit(12);
   },
 
   /**
@@ -35,13 +45,15 @@ module.exports = {
     let result;
 
     // Hago una búsqueda del producto, y si no lo encuentra devuelvo un 404
-    await ProductoModel.find({ categoriaId: categoriaId }).sort({ id: -1 }).then((data) => {
-      if (data[0] !== undefined && data[0].id !== undefined) {
-        result = data;
-      } else {
-        result = { message: errorMsg404, status: 404 };
-      }
-    });
+    await ProductoModel.find({ categoriaId: categoriaId })
+      .sort({ id: -1 })
+      .then((data) => {
+        if (data[0] !== undefined && data[0].id !== undefined) {
+          result = data;
+        } else {
+          result = { message: errorMsg404, status: 404 };
+        }
+      });
 
     return result;
   },
@@ -55,9 +67,23 @@ module.exports = {
     let result;
 
     // Hago una búsqueda del producto, y si no lo encuentra devuelvo un 404
-    await ProductoModel.find({ id: productoId }).then((data) => {
+    await ProductoModel.aggregate([
+      {
+        $match: {
+          id: parseInt(productoId),
+        },
+      },
+      {
+        $lookup: {
+          from: "categorias",
+          foreignField: "id",
+          localField: "categoriaId",
+          as: "categoria",
+        },
+      },
+    ]).then((data) => {
       if (data[0] !== undefined && data[0].id !== undefined) {
-        result = data;
+        result = data[0];
       } else {
         result = { message: errorMsg404, status: 404 };
       }
@@ -77,36 +103,53 @@ module.exports = {
    */
   storage: async (productData) => {
     let result;
-    let lastId;
 
     // Primero chequeo de que la petición contenga parámetros a insertar en la BD
     if (Object.entries(productData).length > 0) {
       // Obtengo el último Id insertado
-      await ProductoModel.find()
+      const lastId = await ProductoModel.find()
         .sort({ id: -1 })
         .limit(1)
         .then((data) => {
-          if (data[0] !== undefined) lastId = data[0].id;
-          else lastId = 1;
+          if (data[0] !== undefined) return data[0].id;
+          else return 1;
         })
         .catch((error) => {
           console.error(error);
         });
 
       // Hago la inserción en la BD capturando los parámetros pasados por POST
-      await ProductoModel.create({
+      const producto = new ProductoModel({
         id: lastId + 1,
         categoriaId: productData.categoriaId,
         descripcion: productData.descripcion,
         descripcionShort: productData.descripcionShort,
         imagen: productData.imagen,
         nombreProducto: productData.nombreProducto,
-        precio: productData.precio
-      })
-        .then((result = { message: errorMsg200Storage, status: 200 }))
-        .catch((error) => {
-          result = { message: error.message, status: 500 };
-        });
+        precio: productData.precio,
+      });
+
+      try {
+        if (
+          productData.nombreProducto === "" ||
+          productData.precio === "" ||
+          productData.categoriaId === ""
+        ) {
+          result = {
+            message: "Debe rellenar todos los campos",
+            status: 401,
+          };
+        } else {
+          await producto.save();
+          result = {
+            message: errorMsg200Storage,
+            status: 200,
+            product: producto,
+          };
+        }
+      } catch (error) {
+        result = { message: error.message, status: 500 };
+      }
     } else {
       result = { message: errorMsg400, status: 400 };
     }
@@ -130,30 +173,56 @@ module.exports = {
     // Primero chequeo de que la petición contenga parámetros a actualizar en la BD
     if (Object.entries(productData).length > 0) {
       const productoId = productData.params.productoId;
+      let imagen;
+
+      // Si la imagen viene vacía, le dejo la que tiene por defecto
+      if(productData.body.imagen === '') {
+        const productDbImage = await ProductoModel.find({ id: productoId });
+        imagen = productDbImage[0].imagen;
+      }
+      else {
+        imagen = productData.body.imagen;
+      }
 
       // Realizo el update del modelo buscando por la propiedad id
-      await ProductoModel.updateOne(
-        { id: productoId },
-        {
-          categoriaId: productData.body.categoriaId,
-          descripcion: productData.body.descripcion,
-          descripcionShort: productData.body.descripcionShort,
-          imagen: productData.body.imagen,
-          nombreProducto: productData.body.nombreProducto,
-          precio: productData.body.precio
+      try {
+        // Compruebo de que todos los campos obligatorios vengan rellenos
+        if (
+          productData.body.nombreProducto === "" ||
+          productData.body.precio === "" ||
+          productData.body.categoriaId === ""
+        ) {
+          return {
+            message: "Debe rellenar todos los campos",
+            status: 401,
+          };
         }
-      )
-        .then((data) => {
-          // Si el documento existe devuelvo código 200 en caso contrario 404
-          if (data.matchedCount > 0) {
-            result = { message: errorMsg200Update, status: 200 };
-          } else {
-            result = { message: errorMsg404, status: 404 };
+        
+        await ProductoModel.updateOne(
+          { id: productoId },
+          {
+            categoriaId: productData.body.categoriaId,
+            descripcion: productData.body.descripcion,
+            descripcionShort: productData.body.descripcionShort,
+            imagen: imagen,
+            nombreProducto: productData.body.nombreProducto,
+            precio: productData.body.precio,
           }
-        })
-        .catch((error) => {
-          result = { message: error.message, status: 500 };
-        });
+        )
+          .then((data) => {
+            // Si el documento existe devuelvo código 200 en caso contrario 404
+            if (data.matchedCount > 0) {
+              result = { message: errorMsg200Update, status: 200 };
+            } else {
+              result = { message: errorMsg404, status: 404 };
+            }
+          })
+          .catch((error) => {
+            result = { message: error.message, status: 500 };
+          });
+      } catch (error) {
+        result = { message: error.message, status: 500 };
+      }
     } else {
       result = { message: errorMsg400, status: 400 };
     }
@@ -181,7 +250,7 @@ module.exports = {
       .catch((error) => {
         result = { message: error.message, status: 500 };
       });
-    
+
     return result;
   },
 };
